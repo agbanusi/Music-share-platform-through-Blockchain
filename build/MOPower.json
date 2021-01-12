@@ -18689,10 +18689,268 @@
       "links": {},
       "address": "0x549a0e683FfddA415ba51b09726F3EE3c7EbD6c2",
       "transactionHash": "0x0056b0e5c1d29b15a1d826963859e0ae36a449a84f0ffbb99ae745c5d8afc8b1"
+    },
+    "1609888363794": {
+      "events": {
+        "0x231226dd106d4aca2101ee4efd92aec1463f12fefe62a5e4e262c2039308e785": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "_usernameHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "consumerAuth",
+          "type": "event"
+        },
+        "0xd4a75dab37510dbf597b3992b7bd47b25faed85a367255d4047b0463ade0ec7c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "_consumerUsernameHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "consumerSaved",
+          "type": "event"
+        },
+        "0xd7c303a1058840daf2fbd621ffbdb495c4107669f193ebf87d770a33650a4e02": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_meterSerial",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_usedUnits",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "consumptionSaved",
+          "type": "event"
+        },
+        "0xb1fa8e515145b4fe796c89558308586521431ea61c3e09200cb942db0694eecf": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "meterCountUpdated",
+          "type": "event"
+        },
+        "0x63756c55a8fface27c066fbb539d63f07dfa9e681c605598225a560031330ad6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_meterId",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "_consumerUsername",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "meterSaved",
+          "type": "event"
+        },
+        "0xfa99d3c7baaee6022c8f30650defc2c209fa2767178e31b167d4436a32a2ec66": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "meterSerial",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "token",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "consumerUsernameHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "producerUsernameHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "unitsBought",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct MOPower.Transaction[]",
+              "name": "_transactions",
+              "type": "tuple[]"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "meterTrasactionsFetched",
+          "type": "event"
+        },
+        "0x688d24dd32471a6052d82f206d3abcf430cd23b1d9baacbe9b3a86cfabe282c8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "_producerUsernameHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "producerSaved",
+          "type": "event"
+        },
+        "0xdd15aef700b6baf1da9dc5871a496002f1cc21489d388cf72db3db4357acabb8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_token",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "transactionSaved",
+          "type": "event"
+        },
+        "0x9f534a83f03bd1094b0e3d596e7a3c6ba8e3b68875b488211582e5af75957fe9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "meterSerial",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "token",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "consumerUsernameHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "producerUsernameHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "unitsBought",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct MOPower.Transaction",
+              "name": "_transaction",
+              "type": "tuple"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "trasactionFetched",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xEefc51cD00898e9730D9880e33CF1278777aA925",
+      "transactionHash": "0x7d606cffc0ba22a5df0c28277c8ce9c38b5c9db1b0f98f4b3a64ff86f57edc13"
     }
   },
   "schemaVersion": "3.3.0",
-  "updatedAt": "2020-10-25T22:16:08.599Z",
+  "updatedAt": "2021-01-05T23:13:34.405Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Implements meter transactions and consumption on immutable ledger",
