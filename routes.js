@@ -44,7 +44,7 @@ function routes(app, dbe, lms, accounts){
         let id = shortid.generate() + shortid.generate()
         if(buffer && title){
             //console.log(ipfs)
-            let ipfsHash = await ipfs.add(Buffer.alloc(8))
+            let ipfsHash = await ipfs.add(buffer || Buffer.alloc(8))
             let hash = ipfsHash[0].hash
             lms.sendIPFS(id, hash, {from: accounts[0]})
             .then((_hash, _address)=>{
@@ -71,7 +71,7 @@ function routes(app, dbe, lms, accounts){
         }
     })
     app.get('/access/:email/:id', async (req,res)=>{
-        id = req.params.id
+        let id = req.params.id
         if(req.params.id && req.params.email){
             db.findOne({email:req.body.email},(err,doc)=>{
                 if(doc){
