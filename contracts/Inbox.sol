@@ -2,14 +2,14 @@ pragma solidity ^0.5.0;
 
 contract Inbox{
     //Structure
-    mapping (bytes32=>bytes32) public ipfsInbox;
+    mapping (string=>string) public ipfsInbox;
     
     //Events
-    event ipfsSent(bytes32 _ipfsHash, bytes32 _address);
-    event inboxResponse(bytes32 response);
+    event ipfsSent(string _ipfsHash, string _address);
+    event inboxResponse(string response);
     
     //Modifiers
-    modifier notFull (bytes32 memory _string) {
+    modifier notFull (string memory _string) {
     bytes memory stringTest = bytes(_string); 
     require(stringTest.length==0); 
     _;
@@ -18,27 +18,18 @@ contract Inbox{
     // An empty constructor that creates an instance of the conteact
     constructor() public{}
     
-    //takes in receiver's address and IPFS address. Places the IPFSadress in the receiver's inbox
-    function sendIPFS(bytes32 _address, bytes32 memory _ipfsHash) notFull(ipfsInbox[_address]) public{
+    //takes in receiver's address and IPFS hash. Places the IPFSadress in the receiver's inbox
+    function sendIPFS(string memory _address, string memory _ipfsHash) notFull(ipfsInbox[_address]) public{
         ipfsInbox[_address] = _ipfsHash;
         emit ipfsSent(_ipfsHash, _address);
     }
     
-    //check your inbox and empties it afterwards
-    function checkInbox() public{
-        bytes32 memory ipfs_hash=ipfsInbox[msg.sender];
-        if(bytes(ipfs_hash).length==0){
-            emit inboxResponse("Empty Inbox");
-        }else{
-            ipfsInbox[msg.sender]="";
-            emit inboxResponse(ipfs_hash);
-        }
-    }
 
     //retrieves hash
-    function getHash(bytes32 _address) public{
-        bytes32 memory ipfs_hash=ipfsInbox[msg.sender];
-        emit inboxResponse(ipfs_hash);
+    function getHash(string memory _address) public view returns(string memory) {
+        string memory ipfs_hash=ipfsInbox[_address];
+         //emit inboxResponse(ipfs_hash);
+        return ipfs_hash;
     }
     
 }

@@ -1,7 +1,6 @@
 const shortid = require('short-id')
-const IPFS =require('ipfs-http-client');
-const ipfs = IPFS({ host: 'ipfs.infura.io', 
-    port: 5001,protocol: 'https' });
+const IPFS = require("ipfs-api")
+const ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'})
 
 function routes(app, dbe, lms, accounts){
     let db= dbe.collection('music-users')
@@ -44,11 +43,12 @@ function routes(app, dbe, lms, accounts){
         let title = req.body.title
         let id = shortid.generate() + shortid.generate()
         if(buffer && title){
-            let ipfsHash = await ipfs.add(buffer)
-            let hash = ipfsHash.cid.toString()
+            //console.log(ipfs)
+            let ipfsHash = await ipfs.add(Buffer.alloc(8))
+            let hash = ipfsHash[0].hash
             lms.sendIPFS(id, hash, {from: accounts[0]})
             .then((_hash, _address)=>{
-                db.insertOne({id,hash, title,name})
+                music.insertOne({id,hash, title,name})
                 res.json({"status":"success", id})
             })
             .catch(err=>{
@@ -70,13 +70,16 @@ function routes(app, dbe, lms, accounts){
             res.status(400).json({"status":"Failed", "reason":"wrong input"})
         }
     })
-    app.get('/access/:email/:id', (req,res)=>{
+    app.get('/access/:email/:id', async (req,res)=>{
+        id = req.params.id
         if(req.params.id && req.params.email){
             db.findOne({email:req.body.email},(err,doc)=>{
                 if(doc){
                     lms.getHash(id, {from: accounts[0]})
                     .then(async(hash)=>{
-                        let data = await ipfs.get(hash)
+                        console.log(hash)
+                        let data = await ipfs.files.get(hash)
+                        console.log(data)
                         res.json({"status":"success", data: data.content})
                     })
                 }else{
